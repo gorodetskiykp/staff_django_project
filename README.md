@@ -23,3 +23,8 @@
 - сервер: models.py - структура базы данных -> ORM -> migrate -> BD
 - сервер: templates - внешний вид данных (html)
 - сервер: url -> request -> views (templates + models) -> response -> client
+
+# Архитекутра данных
+- класс в models.py
+- python3 manage.py makemigrations
+- python3 manage.py migrate
