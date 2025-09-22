@@ -11,6 +11,7 @@ class Item(models.Model):
         return f"{self.name} / {self.category}"
     
     class Meta:
+        # ordering = ["category", "-name"]
         ordering = ["category", "name"]
         verbose_name = "Вещь"
         verbose_name_plural = "Вещи"
