@@ -1,10 +1,10 @@
-<a href="/store/">Меню</a>
+<a href="{% url 'store:menu' %}">Меню</a>
 
 <h1>{{ t_title }}</h1>
 
 <ol>
 {% for item in t_items %}
-    <li>{{ item.name }} ({{ item.category }}) - {{ item.get_date }} 
+    <li>{{ item.name }} ({{ item.category_fk }}) - {{ item.get_date }} 
         
         {% if item.color %}
             [{{ item.color }}]
@@ -25,8 +25,8 @@
 {% for item in t_items %}
     <tr>
         <td>{{ item.id }}</td>
-        <td>{{ item.category }}</td>
-        <td>{{ item.name }}</td>
+        <td>{{ item.category_fk }}</td>
+        <td><a href="{% url 'store:staff_details' item.id %}">{{ item.name }}</a></td>
         <td>{% if item.color %}{{ item.color }}{% endif %}</td>
         <td>{{ item.get_date }}</td>
     </tr>

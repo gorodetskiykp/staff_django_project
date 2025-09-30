@@ -25,3 +25,14 @@ def staff_list(request):
         "t_items": items,
     }
     return render(request=request, template_name=template, context=context)
+
+
+def staff_details(request, id):
+    item = Item.objects.get(id=id)
+    same_items = Item.objects.filter(category_fk=item.category_fk)
+    template = "staff/staff_details.html"
+    context = {
+        "item": item,
+        "t_items": same_items,
+    }
+    return render(request=request, template_name=template, context=context)

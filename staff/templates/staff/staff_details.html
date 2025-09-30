@@ -1,0 +1,31 @@
+<a href="{% url 'store:menu' %}">Меню</a><br />
+<a href="{% url 'store:staff_list' %}">Список вещей</a>
+
+<h1>{{ item.name }}</h1>
+<h4>{{ item.category_fk.category }}</h4>
+<p>{% if item.color %}{{ item.color }}{% endif %}</p>
+<p>{{ item.get_date }}</p>
+
+<hr />
+<h4>Похожие вещи</h4>
+<p>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>Категория</td>
+            <td>Название</td>
+            <td>Цвет</td>
+            <td>Дата приобретения</td>
+        </tr>
+    {% for item in t_items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.category_fk }}</td>
+            <td><a href="{% url 'store:staff_details' item.id %}">{{ item.name }}</a></td>
+            <td>{% if item.color %}{{ item.color }}{% endif %}</td>
+            <td>{{ item.get_date }}</td>
+        </tr>
+    {% endfor %}
+    
+    </table>
+</p>
